@@ -226,7 +226,8 @@ header('Access-Control-Allow-Methods: GET, POST');
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-sm-2">
+        <div class="col-sm-2 border border-dark">
+                Link Terkait : <a href="https://www.covid19.go.id/situasi-virus-corona/">www.covid19.go.id</a> <br/><br/>
                 <div class="row no-gutters">
                     <div class="col-lg-12">
                         <div class="price-table price-table-primary prominent wow zoomInDown animation-delay-2" style="visibility: visible; animation-name: zoomInDown;">
@@ -236,18 +237,42 @@ header('Access-Control-Allow-Methods: GET, POST');
                                     <span id="odp"></span>
                                     <font size="4px"> Orang</font>
                                 </h3>
+                                <p>Dalam Pemantauan : <span id="dalam_pemantauan"></span></p>
+                                <p>Selesai Pemantauan : <span id="selesai_pemantauan"></span></p>
                             </header>
                         </div>
                     </div>
-
+                    <div class="col-lg-12">
+                        <br/><br/>
+                    </div>
                     <div class="col-lg-12">
                         <div class="price-table price-table-royal prominent wow zoomInUp animation-delay-2" style="visibility: visible; animation-name: zoomInUp;">
                             <header class="price-table-header">
                                 <span class="price-table-category">JUMLAH PDP</span>
                                 <h3>
-                                   <span id="odp2"></span>
+                                <span id="pdp"></span>
                                     <font size="4px"> Orang</font>
                                 </h3>
+                                <p>Masih dirawat : <span id="dirawat"></span></p>
+                                <p>Pulang dan Sehat : <span id="pulang"></span></p>
+                            </header>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <br/><br/>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="price-table price-table-royal prominent wow zoomInUp animation-delay-2" style="visibility: visible; animation-name: zoomInUp;">
+                            <header class="price-table-header">
+                                <span class="price-table-category">TERKONFIRMASI COVID-19</span>
+                                <h3>
+                                <span id="positif"></span>
+                                    <font size="4px"> Orang</font>
+                                </h3>
+                                <p>Dirawat : <span id="positif_rawat"></span></p>
+                                <p>Isolasi dari Rumah :  <span id="isolasi"></span></p>
+                                <p>Meninggal : <span id="meninggal"></span></p>
+                                <p>Sembuh : <span id="sembuh"></span></p>
                             </header>
                         </div>
                     </div>
@@ -255,54 +280,9 @@ header('Access-Control-Allow-Methods: GET, POST');
                         <br/>
 
                     </div>
-                    <h3>Total Periksa</h3>
                     <div class="col-lg-12">
-                        <div class="price-table price-table-royal prominent wow zoomInUp animation-delay-2" style="visibility: visible; animation-name: zoomInUp;">
-                            <header class="price-table-header">
-                                <span class="price-table-category">Hasil Negatif</span>
-                                <h3>
-                                   <span id="negatif"></span>
-                                    <font size="4px"> Orang</font>
-                                </h3>
-                            </header>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="price-table price-table-royal prominent wow zoomInUp animation-delay-2" style="visibility: visible; animation-name: zoomInUp;">
-                            <header class="price-table-header">
-                                <span class="price-table-category">Hasil Positif</span>
-                                <h3>
-                                    <span id="positif"></span>
-                                    <font size="4px"> Orang</font>
-                                </h3>
-                            </header>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="price-table price-table-royal prominent wow zoomInUp animation-delay-2" style="visibility: visible; animation-name: zoomInUp;">
-                            <header class="price-table-header">
-                                <span class="price-table-category">Menunggu Hasil</span>
-                                <h3>
-                                    <span id="menunggu"></span>
-                                    <font size="4px"> Orang</font>
-                                </h3>
-                            </header>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="price-table price-table-royal prominent wow zoomInUp animation-delay-2" style="visibility: visible; animation-name: zoomInUp;">
-                            <header class="price-table-header">
-                                <span class="price-table-category">Meninggal</span>
-                                <h3>
-                                    <span id="meninggal"></span>
-                                    <font size="4px"> Orang</font>
-                                </h3>
-                            </header>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <br/> Waktu Update
-                        <br/> <span id="waktu"></span>
+                        <br/>
+                        <br/> Update: <span id="waktu"></span>
 
                     </div>
 
@@ -386,13 +366,23 @@ header('Access-Control-Allow-Methods: GET, POST');
              // data.forEach(movie => {
                 // Log each movie's title
                 document.getElementById("odp").innerHTML = data.total_odp
-                document.getElementById("odp2").innerHTML = data.pdp
-                document.getElementById("negatif").innerHTML = data.negatif
+                document.getElementById("pdp").innerHTML = data.pdp
+                // document.getElementById("negatif").innerHTML = data.negatif
                 document.getElementById("positif").innerHTML = data.positif
-                document.getElementById("menunggu").innerHTML = data.menunggu_hasil
-                document.getElementById("meninggal").innerHTML = data.meninggal
+                document.getElementById("meninggal").innerHTML = data.covid_meninggal
                 document.getElementById("waktu").innerHTML = data.waktu
-                console.log(data.id)
+                // document.getElementById("menunggu").innerHTML = data.menunggu_hasil
+
+                document.getElementById("dalam_pemantauan").innerHTML = data.odp_dalam_pemantauan
+                document.getElementById("selesai_pemantauan").innerHTML = data.odp_selesai_pemantauan
+
+                document.getElementById("dirawat").innerHTML = data.pdp_masih_dirawat
+                document.getElementById("pulang").innerHTML = data.pdp_pulangdan_sehat
+                
+                document.getElementById("positif_rawat").innerHTML = data.covid_dirawat
+                document.getElementById("isolasi").innerHTML = data.covid_isolasi_dirumah
+                document.getElementById("sembuh").innerHTML = data.covid_sembuh
+                console.log(data.positif)
              // })
         }
 
